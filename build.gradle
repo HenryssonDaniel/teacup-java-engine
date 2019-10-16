@@ -57,6 +57,7 @@ configurations {
 }
 
 dependencies {
+    api 'io.github.henryssondaniel.teacup:core:1.1.5-SNAPSHOT'
     implementation 'org.assertj:assertj-core:3.12.2'
     implementation 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
     implementation 'org.junit.platform:junit-platform-launcher:1.5.2'
@@ -127,7 +128,9 @@ publishing {
 }
 
 repositories {
+    mavenLocal()
     jcenter()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
 }
 
 signing {
