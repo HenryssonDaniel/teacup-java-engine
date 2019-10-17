@@ -3,7 +3,7 @@ package io.github.henryssondaniel.teacup.engine;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
-import io.github.henryssondaniel.teacup.core.Server;
+import io.github.henryssondaniel.teacup.protocol.Server;
 import org.junit.jupiter.api.Test;
 
 class DefaultSetupTest {

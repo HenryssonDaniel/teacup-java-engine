@@ -1,7 +1,7 @@
 package io.github.henryssondaniel.teacup.engine;
 
-import io.github.henryssondaniel.teacup.core.Server;
 import io.github.henryssondaniel.teacup.core.logging.Factory;
+import io.github.henryssondaniel.teacup.protocol.Server;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;

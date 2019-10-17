@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import io.github.henryssondaniel.teacup.core.Server;
+import io.github.henryssondaniel.teacup.protocol.Server;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.logging.Level;
