@@ -1,9 +1,11 @@
 package io.github.henryssondaniel.teacup.engine;
 
+import io.github.henryssondaniel.teacup.protocol.server.Base;
+import io.github.henryssondaniel.teacup.protocol.server.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-class TestServerImpl implements TestServer {
+class TestServerImpl extends Base<String, String, String> implements TestServer {
   private static final Logger LOGGER = Logger.getLogger(TestServerImpl.class.getName());
 
   private boolean setUp;
@@ -30,4 +32,22 @@ class TestServerImpl implements TestServer {
     LOGGER.log(Level.FINE, "Tear down");
     tearDown = true;
   }
+
+  @Override
+  protected String createProtocolContext(String context, Handler<String> handler) {
+    return "protocolContext";
+  }
+
+  @Override
+  protected String getKey(String context) {
+    return "key";
+  }
+
+  @Override
+  protected boolean isEquals(String context, String protocolContext) {
+    return false;
+  }
+
+  @Override
+  protected void serverCleanup(String protocolContext) {}
 }

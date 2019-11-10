@@ -6,6 +6,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import io.github.henryssondaniel.teacup.protocol.Server;
+import io.github.henryssondaniel.teacup.protocol.server.Base;
+import io.github.henryssondaniel.teacup.protocol.server.Handler;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -22,7 +24,7 @@ class TeacupTest {
   private static final String SERVER = "server";
 
   private final Executor executor = mock(Executor.class);
-  private final Server server = new TestServer();
+  private final Server<String, String> server = new TestServer();
   private final Setup setup = mock(Setup.class);
 
   @BeforeEach
@@ -90,7 +92,7 @@ class TeacupTest {
         .withMessage(String.format(NOT_EXIST, "server"));
   }
 
-  private static class TestServer implements Server {
+  private static class TestServer extends Base<String, String, String> {
     private static final Logger LOGGER = Logger.getLogger(TestServer.class.getName());
 
     @Override
@@ -102,6 +104,24 @@ class TeacupTest {
     public void tearDown() {
       LOGGER.log(Level.FINE, "Tear down");
     }
+
+    @Override
+    protected String createProtocolContext(String context, Handler<String> handler) {
+      return "protocolContext";
+    }
+
+    @Override
+    protected String getKey(String context) {
+      return "key";
+    }
+
+    @Override
+    protected boolean isEquals(String context, String protocolContext) {
+      return false;
+    }
+
+    @Override
+    protected void serverCleanup(String protocolContext) {}
   }
 
   private static final class TestTestServer extends TestServer {

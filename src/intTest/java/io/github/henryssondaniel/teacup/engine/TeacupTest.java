@@ -3,7 +3,8 @@ package io.github.henryssondaniel.teacup.engine;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import io.github.henryssondaniel.teacup.protocol.Server;
+import io.github.henryssondaniel.teacup.protocol.server.Base;
+import io.github.henryssondaniel.teacup.protocol.server.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,7 +46,7 @@ class TeacupTest {
                     TestServer.class, ExecutorFactory.create(), Constants.SERVER_NAME));
   }
 
-  private static final class ExtendedServer implements Server {
+  private static final class ExtendedServer extends Base<String, String, String> {
     private static final Logger LOGGER = Logger.getLogger(ExtendedServer.class.getName());
 
     @Override
@@ -57,5 +58,23 @@ class TeacupTest {
     public void tearDown() {
       LOGGER.log(Level.FINE, "Tear down");
     }
+
+    @Override
+    protected String createProtocolContext(String context, Handler<String> handler) {
+      return "protocolContext";
+    }
+
+    @Override
+    protected String getKey(String context) {
+      return "key";
+    }
+
+    @Override
+    protected boolean isEquals(String context, String protocolContext) {
+      return false;
+    }
+
+    @Override
+    protected void serverCleanup(String protocolContext) {}
   }
 }
