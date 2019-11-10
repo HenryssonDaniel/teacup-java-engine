@@ -5,5 +5,9 @@
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.henryssondaniel.teacup/engine.svg)](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22io.github.henryssondaniel.teacup%22%20AND%20a%3A%22engine%22)
 [![Javadocs](https://www.javadoc.io/badge/io.github.henryssondaniel.teacup/engine.svg)](https://www.javadoc.io/doc/io.github.henryssondaniel.teacup/engine)
 ## What ##
+Parent project for all engine implementations.  
+This project contains engine specific interfaces and base classes.
 ## Why ##
+It should be easy to add support for a new engines.
 ## How ##
+By extracting repeated code as much as possible.
