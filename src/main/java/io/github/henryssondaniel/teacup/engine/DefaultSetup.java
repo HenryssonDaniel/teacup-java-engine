@@ -18,7 +18,7 @@ public abstract class DefaultSetup implements Setup {
   private static final String LOG_PUT = "Adding the {0}: {1}";
 
   private final Map<String, Object> clients = new HashMap<>(0);
-  private final Map<String, Server> servers = new HashMap<>(0);
+  private final Map<String, Server<?, ?>> servers = new HashMap<>(0);
 
   @Override
   public Map<String, Object> getClients() {
@@ -27,7 +27,7 @@ public abstract class DefaultSetup implements Setup {
   }
 
   @Override
-  public Map<String, Server> getServers() {
+  public Map<String, Object> getServers() {
     LOGGER.log(Level.FINE, LOG_GET, "servers");
     return new HashMap<>(servers);
   }
@@ -39,7 +39,7 @@ public abstract class DefaultSetup implements Setup {
   }
 
   @Override
-  public Server putServer(String name, Server server) {
+  public Object putServer(String name, Server<?, ?> server) {
     LOGGER.log(Level.FINE, LOG_PUT, new Object[] {"server", name});
     return servers.put(name, server);
   }

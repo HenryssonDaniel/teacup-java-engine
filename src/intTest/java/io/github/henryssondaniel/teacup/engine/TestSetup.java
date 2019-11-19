@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 public class TestSetup extends DefaultSetup {
   private static final Logger LOGGER = Logger.getLogger(TestSetup.class.getName());
 
-  private final Server server = new TestServerImpl();
+  private final Server<String, String> server = new TestServerImpl();
 
   @Override
   public void initialize() {

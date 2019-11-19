@@ -49,7 +49,7 @@ public enum Teacup {
    * @throws TeacupException if the server could not be retrieved
    * @since 1.0
    */
-  public static <T extends Server> T getServer(Class<T> clazz, Executor executor, String name)
+  public static <T extends Server<?, ?>> T getServer(Class<T> clazz, Executor executor, String name)
       throws TeacupException {
     LOGGER.log(Level.FINE, MESSAGE, new Object[] {"server", name, clazz.getName()});
 

@@ -23,7 +23,7 @@ public interface Setup {
    * @return the servers
    * @since 1.0
    */
-  Map<String, Server> getServers();
+  Map<String, Object> getServers();
 
   /**
    * The initializer for the setup class. This method should prepare the setup class so that it can
@@ -53,5 +53,5 @@ public interface Setup {
    *     mapping for {@code name}
    * @since 1.0
    */
-  Server putServer(String name, Server server);
+  Object putServer(String name, Server<?, ?> server);
 }

@@ -1,6 +1,7 @@
 package io.github.henryssondaniel.teacup.engine;
 
 import io.github.henryssondaniel.teacup.core.logging.Factory;
+import io.github.henryssondaniel.teacup.protocol.Server;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
@@ -51,7 +52,7 @@ class DefaultExecutor implements Executor {
     try {
       currentSetup = (Setup) constructor.newInstance();
       currentSetup.initialize();
-      currentSetup.getServers().forEach((name, server) -> server.setUp());
+      currentSetup.getServers().forEach((name, server) -> ((Server<?, ?>) server).setUp());
     } catch (IllegalAccessException
         | IllegalArgumentException
         | InstantiationException
@@ -63,7 +64,7 @@ class DefaultExecutor implements Executor {
 
   private void tearDownFixture() {
     if (currentSetup != null) {
-      currentSetup.getServers().forEach((name, server) -> server.tearDown());
+      currentSetup.getServers().forEach((name, server) -> ((Server<?, ?>) server).tearDown());
       currentSetup = null;
     }
   }
